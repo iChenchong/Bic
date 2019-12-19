@@ -1,0 +1,17 @@
+import cv2
+import os
+import numpy as np
+
+path = "C:\\Users\\chenc\\Pictures\\One\\" # LR image path
+names =  os.listdir(path)
+print(names)
+for name in names:
+    img = cv2.imread(path+name)
+    h,w,c = img.shape
+    matScale = np.float32([[8, 0, 0], [0, 8, 0]])
+    dst = cv2.warpAffine(img, matScale, (int(w * 8), int(h * 8)))
+    cv2.imwrite("C:\\Users\\chenc\\Pictures\\3\\"+ name, dst) # HR image name, path
+
+
+
+
